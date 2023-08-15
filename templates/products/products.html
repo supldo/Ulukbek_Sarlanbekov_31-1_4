@@ -1,0 +1,25 @@
+{% extends 'layouts/index.html' %}
+
+
+{% block content %}
+    <div class="products row row-cols-1 row-cols-md-6 g-5">
+        {% for product in products %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.title }}</h5>
+                        <p class="card-text">Бренд: <b>{{ product.brand }}</b></p>
+                        <p class="card-text">Объем видеопамяти: <b>{{ product.memory }} МБ</b></p>
+                        <p class="card-text">Тип памяти: <b>{{ product.memory_type }}</b></p>
+                        <p class="card-text">Бренд: <b>{{ product.rate }}</b></p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Цена: <b>{{ product.price }} сом</b></small>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
