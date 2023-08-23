@@ -1,0 +1,54 @@
+{% extends 'layouts/index.html' %}
+{% block content %}
+    <div class="row"><h3>{{ product.title }}</h3></div>
+    <div class="row mb-5">
+        <div class="col-5 gy-4">
+            <div class="img-block"><img src="/media/{{ product.image }}" alt="" class="detail-img"></div>
+        </div>
+        <div class="col-4 gy-4">
+            <div class="col">Оценка: <b>{{ product.rate }}</b></div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">Бренд:</div>
+                    <div class="col-6"><b>{{ product.brand }}</b></div>
+                </div>
+                <div class="row">
+                    <div class="col">Объём памяти:</div>
+                    <div class="col-6"><b>{{ product.memory }}</b></div>
+                </div>
+                <div class="row">
+                    <div class="col">Тип памяти:</div>
+                    <div class="col-6"><b>{{ product.memory_type }}</b></div>
+                </div>
+                <div class="row">
+                    <div class="col">Цена:</div>
+                    <div class="col-6"><b>{{ product.price }}</b></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-2">
+        {% if reviews %}
+            <h2>Отызывы</h2>
+            <div class="row">
+                {% for review in reviews %}
+                    <div class="row mb-3">
+                        <div class="row">
+                            <div class="row"><b>User</b></div>
+                            <div class="row">
+                                <div class="col">Оценка: <b>{{ review.rate }}</b></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{ review.comment }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h2>Нет отзывов</h2>
+        {% endif %}
+    </div>
+{% endblock %}

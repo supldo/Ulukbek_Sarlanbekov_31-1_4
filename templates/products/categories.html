@@ -1,17 +1,17 @@
 {% extends 'layouts/index.html' %}
 {% block content %}
-    <div class="container-sm">
-        <div class="row mb-3 text-center">
-            {% for c in category %}
-                <div class="col-md-3 gy-4">
-                    <a href="#">
-                        <div class="demo-wrap shadow-sm rounded">
-                            <img class="demo-bg" src="/media/{{ c.icon }}" alt="">
-                            <div class="demo-content text-color h4">{{ c.title }}</div>
+    <div class="row mb-3 text-center">
+        {% for c in category %}
+            <div class="col-md-3 gy-4">
+                <a href="#{{ c.title }}">
+                    <div class="demo-wrap shadow-sm rounded">
+                        <img class="demo-bg" src="/media/{{ c.icon }}" alt="">
+                        <div class="demo-content text-color h4 align-self-center">
+                            <div class="demo-text">{{ c.title }}</div>
                         </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

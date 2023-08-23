@@ -24,3 +24,13 @@ def categories_view(request):
             'category': category
         }
         return render(request, 'products/categories.html', context=context_data)
+
+def detail_view(request, id):
+    if request.method == "GET":
+        product = Product.objects.get(id=id)
+        reviews = product.reviews.all()
+        context_data = {
+            'product': product,
+            'reviews': reviews
+        }
+        return render(request, 'products/detail.html', context=context_data)

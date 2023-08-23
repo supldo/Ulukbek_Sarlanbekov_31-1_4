@@ -2,28 +2,28 @@
 
 
 {% block content %}
-    <div class="container-sm">
-        <div class="row mb-3 text-center">
-            {% for product in products %}
-                <div class="col-md-3 gy-4">
-                    <div class="card h-100 bg-btn-color text-color">
-                        <div class="card-header">
-                            <div class="bg-img"></div>
-                            <img src="/media/{{ product.image }}" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">{{ product.title }}</h5>
-                            <p class="card-text">Бренд: <b>{{ product.brand }}</b></p>
-                            <p class="card-text">Объем видеопамяти: <b>{{ product.memory }} МБ</b></p>
-                            <p class="card-text">Тип памяти: <b>{{ product.memory_type }}</b></p>
-                            <p class="card-text">Бренд: <b>{{ product.rate }}</b></p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-color">Цена: <b>{{ product.price }} сом</b></small>
-                        </div>
+    <div class="row mb-3 text-center">
+        {% for product in products %}
+            <div class="col-md-3 gy-4">
+                <div class="card h-100 bg-btn-color text-color">
+                    <div class="card-header">
+                        <div class="bg-img"></div>
+                        <img src="/media/{{ product.image }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.title }}</h5>
+                        <p class="card-text">Бренд: <b>{{ product.brand }}</b></p>
+                        <p class="card-text">Объем видеопамяти: <b>{{ product.memory }} МБ</b></p>
+                        <p class="card-text">Тип памяти: <b>{{ product.memory_type }}</b></p>
+                        <p class="card-text">Бренд: <b>{{ product.rate }}</b></p>
+                        <p class="card-text">Бренд: <b>{{ product.rate }}</b></p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-color">Цена: <b>{{ product.price }} сом</b></small>
+                        <a class="btn btn-outline-secondary" href="{{ product.id }}">Подробнее</a>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
