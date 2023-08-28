@@ -12,7 +12,6 @@ class Product(models.Model):
         ('GDDR5', 'GDDR5'),
         ('GDDR6', 'GDDR6'),
     ]
-
     image = models.ImageField(upload_to='images/product_image/', blank=True, null=True)
     title = models.CharField(max_length=128)
     brand = models.CharField(max_length=32)

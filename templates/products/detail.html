@@ -28,6 +28,11 @@
         </div>
     </div>
     <div class="row mb-2">
+        <form action="/products/{{ product.id }}/" method="post" enctype='multipart/form-data'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Create">
+        </form>
         {% if reviews %}
             <h2>Отызывы</h2>
             <div class="row">
