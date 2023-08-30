@@ -14,7 +14,9 @@
             </div>
         {% endfor %}
     </div>
-    <div class="row mb-3 gy-4">
-        <a href="/products/create_categories/" class="btn nav-link px-2 text-white">Создать новую категорию</a>
-    </div>
+    {% if not user.is_anonymous %}
+        <div class="row mb-3 gy-4">
+            <a href="/products/create_categories/" class="btn bg-btn-color">Создать новую категорию</a>
+        </div>
+    {% endif %}
 {% endblock %}

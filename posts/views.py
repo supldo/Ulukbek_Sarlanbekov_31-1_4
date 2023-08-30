@@ -6,14 +6,17 @@ from posts.models import Product, Category, Review
 
 def main_view(request):
     if request.method == "GET":
-        return render(request, 'layouts/index.html')
+        context_data = {
+            'user': request.user,
+        }
+        return render(request, 'layouts/index.html', context=context_data)
 
 
 def products_view(request):
     if request.method == "GET":
         products = Product.objects.all()
         context_data = {
-            'products': products
+            'products': products,
         }
         return render(request, 'products/products.html', context=context_data)
 
@@ -22,7 +25,7 @@ def categories_view(request):
     if request.method == "GET":
         category = Category.objects.all()
         context_data = {
-            'category': category
+            'category': category,
         }
         return render(request, 'products/categories.html', context=context_data)
 
@@ -34,7 +37,7 @@ def detail_view(request, id):
         context_data = {
             'product': product,
             'reviews': reviews,
-            'form': ReviewCreateForm
+            'form': ReviewCreateForm,
         }
         return render(request, 'products/detail.html', context=context_data)
     if request.method == "POST":
@@ -48,15 +51,17 @@ def detail_view(request, id):
         context_data = {
             'product': product,
             'reviews': reviews,
-            'form': form
+            'form': form,
         }
         return render(request, 'products/detail.html', context=context_data)
 
 
 def create_categories_view(request):
+    if request.user.is_anonymous:
+        return redirect('/')
     if request.method == "GET":
         context_data = {
-            'form': CetagoryCreateForm
+            'form': CetagoryCreateForm,
         }
         return render(request, 'products/create_categories.html', context=context_data)
     if request.method == "POST":
@@ -72,9 +77,11 @@ def create_categories_view(request):
 
 
 def create_products_view(request):
+    if request.user.is_anonymous:
+        return redirect('/')
     if request.method == "GET":
         context_data = {
-            'form': ProductCreateForm
+            'form': ProductCreateForm,
         }
         return render(request, 'products/create_products.html', context=context_data)
     if request.method == "POST":

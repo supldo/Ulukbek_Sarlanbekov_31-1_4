@@ -79,12 +79,12 @@ a {
     fill: var(--text-color);
 }
 
-svg.logo-svg {
+.logo-svg {
     transform: scale(1.5);
     margin-right: 15px;
 }
 
-img.detail-img {
+.detail-img {
     height: 100%;
     max-width: 100%;
     border-radius: 5px;
