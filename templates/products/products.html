@@ -25,9 +25,34 @@
             </div>
         {% endfor %}
     </div>
-    {% if not user.is_anonymous %}
-        <div class="row mb-3 gy-4">
-            <a href="/products/create_products/" class="btn text-white bg-btn-color">Создать новый продукт</a>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% for page in pages %}
+                        <li class="page-item"><a class="page-link" href="/products/?page={{ page }}">{{ page }}</a></li>
+                    {% endfor %}
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-    {% endif %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            {% if not user.is_anonymous %}
+                <div class="row mb-3 gy-4">
+                    <a href="/products/create_products/" class="btn text-white bg-btn-color">Создать новый продукт</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

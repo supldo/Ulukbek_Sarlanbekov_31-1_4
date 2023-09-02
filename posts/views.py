@@ -1,5 +1,8 @@
+from math import ceil
+
 from django.shortcuts import render, redirect
 
+from posts.constants import PAGINATION_LIMIT
 from posts.forms import CetagoryCreateForm, ProductCreateForm, ReviewCreateForm
 from posts.models import Product, Category, Review
 
@@ -15,8 +18,19 @@ def main_view(request):
 def products_view(request):
     if request.method == "GET":
         products = Product.objects.all()
+        page = int(request.GET.get('page', 1))
+        search = request.GET.get('search')
+
+        max_page = ceil(products.__len__() / PAGINATION_LIMIT) + 1
+
+        if search:
+            products = products.filter(title__icontains=search)
+
+        products = products[PAGINATION_LIMIT * (page - 1): PAGINATION_LIMIT * page]
+
         context_data = {
             'products': products,
+            'pages': range(1, max_page)
         }
         return render(request, 'products/products.html', context=context_data)
 
